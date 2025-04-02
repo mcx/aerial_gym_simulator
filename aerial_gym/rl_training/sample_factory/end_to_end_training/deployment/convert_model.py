@@ -46,7 +46,8 @@ def convert_model_to_script_model(nn_model_full, max_u, min_u, n_motors):
 
     lims = { "max_u": max_u, "min_u": min_u}
 
-    nn_model_deploy = ModelDeploy([15, 32, 24, n_motors], lims)
+    nn_dims = [nn_model_full.actor_critic.actor_encoder.encoders.observations.mlp_head[0].weight.shape[1], nn_model_full.actor_critic.actor_encoder.encoders.observations.mlp_head[0].weight.shape[0], nn_model_full.actor_critic.actor_encoder.encoders.observations.mlp_head[2].weight.shape[0], nn_model_full.actor_critic.action_parameterization.distribution_linear.weight.data.shape[0]]
+    nn_model_deploy = ModelDeploy(nn_dims, lims)
 
     nn_model_deploy.control_stack[0].weight.data[:] = nn_model_full.actor_critic.actor_encoder.encoders.observations.mlp_head[0].weight.data
     nn_model_deploy.control_stack[0].bias.data[:] = nn_model_full.actor_critic.actor_encoder.encoders.observations.mlp_head[0].bias.data
@@ -56,8 +57,12 @@ def convert_model_to_script_model(nn_model_full, max_u, min_u, n_motors):
     nn_model_deploy.control_stack[4].bias.data[:] = nn_model_full.actor_critic.action_parameterization.distribution_linear.bias.data
     
     sm = torch.jit.script(nn_model_deploy)
-    torch.jit.save(sm, "./deployment/deployed_models/tinyprop.pt")
 
-    print('Size normal (B):', os.path.getsize("./deployment/deployed_models/tinyprop.pt"))
+    if not os.path.exists("./deployment/deployed_models"):
+        os.makedirs("./deployment/deployed_models")
+
+    torch.jit.save(sm, "./deployment/deployed_models/etor_task_b.pt")
+
+    print('Size normal (B):', os.path.getsize("./deployment/deployed_models/etor_task_b.pt"))
     
     return sm
