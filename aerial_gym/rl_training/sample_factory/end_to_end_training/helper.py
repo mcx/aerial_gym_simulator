@@ -140,7 +140,7 @@ def override_default_params_func(env, parser, env_configs):
         restart_behavior="overwrite",
         load_checkpoint_kind = "best",
         save_every_sec = 20,
-        save_best_after = 30_000_001, # make sure to save only after curriculum learning phase is over.
+        save_best_after = 3_000_001, # make sure to save only after curriculum learning phase is over.
         save_best_every_sec = 20,
         continuous_tanh_scale = 1.0,
         initial_stddev = 0.4,
@@ -154,7 +154,7 @@ def override_default_params_func(env, parser, env_configs):
 
 env_configs = dict(
             position_setpoint_task_sim2real_end_to_end=dict(
-            train_for_env_steps=160_000_000,
+            train_for_env_steps=15260000, # 160_000_000,
             #encoder_mlp_layers=[256, 128, 64],
             encoder_mlp_layers=[32, 24],#encoder_mlp_layers=[32, 24], #64, 52, 32
             gamma=0.99,

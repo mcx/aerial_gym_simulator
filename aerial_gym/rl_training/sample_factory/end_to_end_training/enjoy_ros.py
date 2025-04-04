@@ -30,7 +30,7 @@ class NN_Inference_ROS(nn.Module):
         self.cfg = load_from_checkpoint(cfg)
         print("cfg: ", self.cfg)
         self.cfg.num_envs = 1
-        self.num_actions = 4
+        self.num_actions = 6
         self.num_obs = 15 #+ self.num_actions * 10
         self.num_agents = 1
         self.observation_space = spaces.Dict(dict(observations=convert_space(spaces.Box(np.ones(self.num_obs) * -np.Inf, np.ones(self.num_obs) * np.Inf))))
@@ -47,6 +47,7 @@ class NN_Inference_ROS(nn.Module):
         checkpoints = Learner.get_checkpoints(
             Learner.checkpoint_dir(self.cfg, policy_id), f"{name_prefix}_*"
         )
+        print("checkpoints: ", checkpoints)
         checkpoint_dict = Learner.load_checkpoint(checkpoints, device)
         self.actor_critic.load_state_dict(checkpoint_dict["model"])
         self.rnn_states = torch.zeros(

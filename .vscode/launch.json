@@ -1,0 +1,21 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+    {
+        "name": "Enjoy",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "/home/paran/Documents/welf_hovers/aerial_gym_simulator/aerial_gym/rl_training/sample_factory/end_to_end_training/enjoy.py",
+        "cwd": "/home/paran/Documents/welf_hovers/aerial_gym_simulator/aerial_gym/rl_training/sample_factory/end_to_end_training",
+        "console": "integratedTerminal",
+        "args": [
+            "--env=position_setpoint_task_sim2real_end_to_end", "--experiment=etor_task_b",
+        ],
+        "python": "/home/paran/miniconda3/envs/rlgpu/bin/python",
+        "justMyCode": false
+    },
+]
+}

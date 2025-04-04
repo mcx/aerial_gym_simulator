@@ -14,6 +14,7 @@ from aerial_gym.config.robot_config.snakey_config import SnakeyCfg
 from aerial_gym.config.robot_config.snakey5_config import Snakey5Cfg
 from aerial_gym.config.robot_config.snakey6_config import Snakey6Cfg
 from aerial_gym.config.robot_config.tinyprop_config import TinyPropCfg
+from aerial_gym.config.robot_config.etor_task_b_config import EtorTaskBCfg
 
 from aerial_gym.config.robot_config.lmf2_config import LMF2Cfg
 
@@ -45,6 +46,7 @@ robot_registry.register("base_rov", BaseROV, BaseROVCfg)
 robot_registry.register("lmf2", BaseMultirotor, LMF2Cfg)
 
 robot_registry.register("tinyprop", BaseMultirotor, TinyPropCfg)
+robot_registry.register("etor_task_b", BaseMultirotor, EtorTaskBCfg)
 
 # register the special robot classes here for working with the examples
 robot_registry.register("base_quadrotor_with_imu", BaseMultirotor, BaseQuadWithImuCfg)
@@ -53,6 +55,4 @@ robot_registry.register("base_quadrotor_with_camera_imu", BaseMultirotor, BaseQu
 robot_registry.register("base_quadrotor_with_lidar", BaseMultirotor, BaseQuadWithLidarCfg)
 robot_registry.register("base_quadrotor_with_faceid_normal_camera", BaseMultirotor, BaseQuadWithFaceIDNormalCameraCfg)
 robot_registry.register("base_quadrotor_with_stereo_camera", BaseMultirotor, BaseQuadWithStereoCameraCfg)
-
-robot_registry.register("tinyprop", BaseMultirotor, TinyPropCfg)
 
