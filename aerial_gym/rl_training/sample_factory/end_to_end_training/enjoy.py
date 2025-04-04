@@ -62,8 +62,7 @@ def test_policy_script_export():
 
 
     dt = 0.01
-    reset_time = 5
-    n_steps = int(5.0 / dt)
+    n_steps = int(15.0 / dt)
     reset_counter = 1
     
     n_crashes = 0

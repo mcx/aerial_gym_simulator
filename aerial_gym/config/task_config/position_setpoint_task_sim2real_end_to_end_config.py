@@ -17,7 +17,7 @@ if EVAL == False:
         privileged_observation_space_dim = 0
         action_space_dim = 6
         observation_space_dim = 15
-        episode_len_steps = 600 
+        episode_len_steps = 20000 
         return_state_before_reset = False
         reward_parameters = { }
         crash_dist = 1.5
